@@ -2,6 +2,7 @@
 using System.ComponentModel.Design;
 using System.IO;
 using System.Windows.Forms;
+using System.Linq;
 using System.Globalization;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -34,6 +35,8 @@ namespace quicktype_vs
         /// VS Package that provides this command, not null.
         /// </summary>
         private readonly Package package;
+
+        private static readonly string[] LanguageNames = { "c++", "cpp", "cplusplus", "cs", "csharp", "elm", "go", "golang", "java", "objc", "objective-c", "objectivec", "swift", "typescript", "ts", "tsx" };
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Command1"/> class.
@@ -127,6 +130,13 @@ namespace quicktype_vs
             var dte = Package.GetGlobalService(typeof(DTE)) as DTE;
             var doc = dte.ActiveDocument.Object() as TextDocument;
             var language = doc.Language.ToLower();
+
+            if (!LanguageNames.Contains(language))
+            {
+                Message("Language \"" + doc.Language + "\" not supported");
+                return;
+            }
+
             ITextDocument document;
             this.GetWpfView().TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(ITextDocument), out document);
             var topLevelName = Path.GetFileNameWithoutExtension(document.FilePath);
@@ -140,6 +150,7 @@ namespace quicktype_vs
             var p = new System.Diagnostics.Process();
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.RedirectStandardError = true;
             p.StartInfo.CreateNoWindow = true;
             p.StartInfo.FileName = quicktypePath;
             p.StartInfo.Arguments = "--lang \"" + language + "\" --top-level \"" + topLevelName + "\" \"" + jsonFilename + "\"";
@@ -149,7 +160,8 @@ namespace quicktype_vs
 
             if (p.ExitCode != 0)
             {
-                Message("quicktype could not process your JSON");
+                string error = p.StandardError.ReadToEnd();
+                Message("quicktype could not process your JSON:\n\n" + error);
                 return;
             }
 

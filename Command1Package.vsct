@@ -56,7 +56,7 @@
         <Parent guid="guidQuicktypePackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Paste JSON as code</ButtonText>
+          <ButtonText>Paste JSON as Code</ButtonText>
         </Strings>
       </Button>
     </Buttons>
