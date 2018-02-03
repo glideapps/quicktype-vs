@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="quicktype_vs.9d6c0f2f-af30-4452-979f-8c13256aa428" Version="1.0" Language="en-US" Publisher="typeguard" />
-        <DisplayName>Paste JSON as code - quicktype</DisplayName>
+        <DisplayName>Paste JSON as Code - quicktype</DisplayName>
         <Description xml:space="preserve">quicktype infers types from sample JSON data, then outputs strongly typed models and serializers for working with that data in C#, TypeScript, C++, and more.Paste </Description>
     </Metadata>
     <Installation>
