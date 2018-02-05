@@ -38,8 +38,8 @@
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
-      <Group guid="guidQuicktypePackageCmdSet" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      <Group guid="guidQuicktypePackageCmdSet" id="QuicktypeMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT"/>
       </Group>
     </Groups>
 
@@ -55,7 +55,7 @@
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidQuicktypePackageCmdSet" id="QuicktypeId" priority="0x0100" type="Button">
-        <Parent guid="guidQuicktypePackageCmdSet" id="MyMenuGroup" />
+        <Parent guid="guidQuicktypePackageCmdSet" id="QuicktypeMenuGroup" />
         <Icon guid="ImageCatalogGuid" id="Paste" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
@@ -73,7 +73,7 @@
 
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidQuicktypePackageCmdSet" value="{3add360c-c3bd-4bd8-91cc-305f37b46106}">
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="QuicktypeMenuGroup" value="0x1020" />
       <IDSymbol name="QuicktypeId" value="0x0100" />
     </GuidSymbol>
 
