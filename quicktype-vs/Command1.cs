@@ -153,7 +153,7 @@ namespace quicktype_vs
             p.StartInfo.RedirectStandardError = true;
             p.StartInfo.CreateNoWindow = true;
             p.StartInfo.FileName = quicktypePath;
-            p.StartInfo.Arguments = "--lang \"" + language + "\" --top-level \"" + topLevelName + "\" \"" + jsonFilename + "\"";
+            p.StartInfo.Arguments = "--telemetry disable --lang \"" + language + "\" --top-level \"" + topLevelName + "\" \"" + jsonFilename + "\"";
             p.Start();
             string output = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
