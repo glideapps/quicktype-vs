@@ -1,3 +1,5 @@
-bin/
-obj/
-Resources/quicktype.exe
+quicktype-vs/bin/
+quicktype-vs/obj/
+quicktype-vs/Resources/quicktype.exe
+.vs/
+packages/
